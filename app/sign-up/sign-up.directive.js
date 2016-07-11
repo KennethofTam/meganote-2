@@ -2,15 +2,20 @@
   angular.module('meganote.signUp')
     .directive('signUp', [
 
+      '$state',
       'UsersService',
-      (UsersService) => {
+      ($state, UsersService) => {
 
         class SignUpController {
           constructor() {
             this.user = {};
           }
           submit() {
-            UsersService.create(this.user);
+            UsersService.create(this.user)
+              .then(
+                // Requires a value for noteId even if we don't need one
+                () => $state.go('notes.form', {noteId: undefined})
+              );
           }
         }
 

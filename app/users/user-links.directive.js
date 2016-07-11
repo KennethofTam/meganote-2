@@ -3,9 +3,10 @@
     // Camelcase here, dashes in actual tag
     .directive('userLinks', [
 
-
+      '$state',
+      'AuthToken',
       'CurrentUser',
-      (CurrentUser) => {
+      ($state, AuthToken, CurrentUser) => {
 
         class UserLinksController {
           user() {
@@ -16,6 +17,11 @@
             // return !!(this.user()._id)
             // Function located in current-user.service.js
             return CurrentUser.signedIn();
+          }
+          logout() {
+            CurrentUser.clear();
+            AuthToken.clear();
+            $state.go('sign-up');
           }
         }
 
@@ -29,6 +35,8 @@
           <div class="user-links">
             <span ng-show="vm.signedIn()">
             Signed in as {{ vm.user().name }}
+            |
+            <a ui-sref="sign-up" ng-click="vm.logout">Logout</a>
             </span>
             <span ng-show="!vm.signedIn()>
               <a ui-sref="sign-up">Sign up for Meganote</a>
