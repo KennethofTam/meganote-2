@@ -17,6 +17,10 @@
           this.user = undefined;
           $window.localStorage.removeItem('currentUser');
         }
+        signedIn() {
+          // Always returns a boolean as opposed to a truthy or falsy
+          return !!this.get()._id;
+        }
       }
       return new CurrentUser();
 
