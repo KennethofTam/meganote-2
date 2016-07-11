@@ -3,7 +3,8 @@
     .directive('userProfile', [
 
       'CurrentUser',
-      (CurrentUser) => {
+      'UsersService',
+      (CurrentUser, UsersService) => {
         class UserProfileController {
 
           constructor() {
@@ -13,6 +14,8 @@
           }
 
           submit() {
+            var vm = this;
+            UsersService.update(vm.user);
 
           }
         }

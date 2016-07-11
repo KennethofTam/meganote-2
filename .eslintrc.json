@@ -37,6 +37,9 @@
     ],
     "no-implicit-globals": [
       "error"
+    ],
+    "no-console": [
+      "error"
     ]
   }
 }
