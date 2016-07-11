@@ -1,9 +1,17 @@
 {
   angular.module('meganote.signIn')
     .directive('signIn', [
-      () => {
-        class SignInController {
 
+      '$state',
+      'UsersService',
+      ($state, UsersService) => {
+        class SignInController {
+          submit() {
+            UsersService.login()
+              .then(
+                () =>  $state.go('note-form', {noteId: undefined})
+              );
+          }
         }
         return {
           scope: {},
