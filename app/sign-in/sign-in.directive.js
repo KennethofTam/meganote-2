@@ -5,24 +5,27 @@
       '$state',
       'UsersService',
       ($state, UsersService) => {
+
         class SignInController {
           submit() {
-            UsersService.login()
+            var vm = this;
+            UsersService.login(vm.user)
               .then(
-                () =>  $state.go('note-form', {noteId: undefined})
+                () => $state.go('notes.form', { noteId: undefined })
               );
           }
         }
+
         return {
           scope: {},
           controller: SignInController,
-          controlelrAs: 'vm',
+          controllerAs: 'vm',
           bindToController: true,
           template: `
           <div class="container">
             <div class="row">
               <div class="col-xs-6 col-xs-offset-4">
-                <h3>Welcome Back</h3>
+                <h3>Welcome back!</h3>
                 <form id="new_user" ng-submit="vm.submit()">
                   <p>
                     <label for="username">Username</label><br>
@@ -43,7 +46,7 @@
                   <input type="submit" name="commit" value="Sign In" class="btn btn-default">
                   <span class="login">
                     Don't have an account?
-                    <a ui-sref="sign-up">Sign up</a>
+                    <a ui-sref="sign-up">Sign up!</a>
                   </span>
                 </form>
               </div>
@@ -51,6 +54,8 @@
           </div>
           `,
         };
+
       }
-    ]) ;
+
+    ]);
 }

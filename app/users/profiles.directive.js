@@ -12,13 +12,12 @@
             // Copy user to prevent editing the name in real time
             vm.user = angular.copy(CurrentUser.get());
           }
-
           submit() {
             var vm = this;
             UsersService.update(vm.user);
-
           }
         }
+
         return {
           scope: {},
           controller: UserProfileController,
@@ -28,7 +27,7 @@
           <div class="container">
             <div class="row">
               <div class="col-xs-6 col-xs-offset-4">
-                <h3>Update your profile</h3>
+                <h3>Update Your Profile</h3>
                 <form id="new_user" ng-submit="vm.submit()">
                   <p>
                     <label for="name">Full Name</label><br>
@@ -47,9 +46,7 @@
                       ng-model="vm.user.username"
                       required>
                   </p>
-
-                  <input type="submit" name="commit" value="Save Changes"
-                    class="btn btn-default">
+                  <input type="submit" name="commit" value="Save Changes" class="btn btn-default">
                   <span class="login">
                     <a ui-sref="notes.form({ noteId: undefined })">
                       Back to my notes
@@ -61,6 +58,8 @@
           </div>
           `,
         };
+
       }
+
     ]);
 }
