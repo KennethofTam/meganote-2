@@ -1,6 +1,10 @@
 {
   angular.module('meganote.users')
     .service('AuthToken', ['$window', $window => {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5f455daac9844dec645640b5d6da7a28e2e13f2f
       class AuthToken {
         constructor() {
           this.token = $window.localStorage.getItem('authToken');
@@ -18,5 +22,9 @@
         }
       }
       return new AuthToken();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5f455daac9844dec645640b5d6da7a28e2e13f2f
     }]);
 }
